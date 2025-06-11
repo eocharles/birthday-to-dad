@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Dad!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&family=Libre+Baskerville&display=swap" rel="stylesheet">
+
+    <style>
+        /* Darker blue background */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #16283A;
+            color: #000;
+            text-align: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Darker gold decor */
+        .star {
+            position: absolute;
+            background: #E8D3B2;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            opacity: 0.7;
+            z-index: 1;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .circle {
+            position: absolute;
+            background: #E8D3B2;
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: 1;
+             animation: float 8s infinite ease-in-out;
+        }
+
+        .ring {
+            position: absolute;
+            border: 3px solid #d4af37;
+            border-radius: 50%;
+            opacity: 0.4;
+            z-index: 1;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Position decor elements */
+       .decor-1 { top: 10%; left: 5%; width: 40px; height: 40px; }
+        .decor-2 { top: 80%; left: 90%; width: 50px; height: 50px; }
+        .decor-3 { top: 40%; left: 85%; width: 30px; height: 30px; }
+        .decor-4 { top: 20%; left: 75%; width: 35px; height: 35px; }
+
+        /* Circles */
+        .decor-5 { top: 70%; left: 10%; width: 45px; height: 45px; }
+        .decor-6 { top: 60%; left: 15%; width: 25px; height: 25px; }
+        .decor-7 { top: 30%; left: 25%; width: 50px; height: 50px; }
+        .decor-8 { top: 85%; left: 70%; width: 40px; height: 40px; }
+
+        /* Rings (stationary) */
+        .decor-9 { top: 15%; left: 80%; width: 60px; height: 60px; }
+        .decor-10 { top: 65%; left: 80%; width: 80px; height: 80px; }
+        .decor-11 { top: 25%; left: 10%; width: 100px; height: 100px; }
+        .decor-12 { top: 75%; left: 20%; width: 70px; height: 70px; }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5em;
+            color: white;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #E8D3B2;
+            margin-top: 10px;
+        }
+
+        .birthday-date {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+        }
+
+        /* Epistle slideshow */
+        .epistle-container {
+            background: linear-gradient(135deg, #E8D3B2 0%, #E8D3B2 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 300px;
+        }
+
+        .epistle {
+    display: none;
+    text-align: center;
+    color: #000;
+    line-height: 2;
+    font-family: 'Libre Baskerville', 'Times New Roman', serif;
+    font-size: 1.6em;
+    letter-spacing: 0.3px;
+}
+
+
+        .epistle.active {
+            display: block;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .epistle p {
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .sign {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.7em;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        /* Navigation arrows */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #0a2e5a;
+            cursor: pointer;
+            background: rgba(212, 175, 55, 0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+        }
+
+        .arrow:hover {
+            background: rgba(212, 175, 55, 0.9);
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #d4af37;
+            opacity: 0.7;
+            animation: confettiFall 5s linear infinite;
+            z-index: 999;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Music player */
+        #music-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #d4af37;
+            color: #0a2e5a;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Gold decor -->
+   <div class="star decor-1"></div>
+    <div class="star decor-2"></div>
+    <div class="star decor-3"></div>
+    <div class="star decor-4"></div>
+
+    <div class="circle decor-5"></div>
+    <div class="circle decor-6"></div>
+    <div class="circle decor-7"></div>
+    <div class="circle decor-8"></div>
+
+    <div class="ring decor-9"></div>
+    <div class="ring decor-10"></div>
+    <div class="ring decor-11"></div>
+    <div class="ring decor-12"></div>
+    <div class="star decor-13" style="top: 50%; left: 30%; width: 35px; height: 35px;"></div>
+    <div class="star decor-14" style="top: 60%; left: 40%; width: 45px; height: 45px;"></div>
+    <div class="circle decor-15" style="top: 90%; left: 20%; width: 25px; height: 25px;"></div>
+
+    <!-- Confetti -->
+    <div id="confetti-container"></div>
+
+    <div class="container">
+        <header>
+            <h1>Happy Birthday, Dad</h1>
+            <h2>CHARLES OBOH</h2>
+            <div class="birthday-date">June 10</div>
+        </header>
+
+        <div class="epistle-container">
+            <!-- Slide 1 -->
+            <div class="epistle active">
+                <p>Dear Dad,</p>
+                <p>Happy Birthday, my hero.</p>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="epistle">
+                <p>Today, as the world marks another year of your life, I find myself filled with so many emotions; gratitude, pride, admiration, and a deep love that words can barely express.</p>
+                <p>I want to take this moment to pause, reflect, and celebrate you, not just because it’s your birthday, but because every single day, you’ve been a living example of what strength, sacrifice, and fatherhood truly mean to us.</p>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="epistle">
+                <p>Dad, from my earliest memories, I’ve looked up to you, not just because you are my father, but because you are the man I aspire to become.
+                    Your kindness is just out of this world, Your wisdom is like an anchor in my life; your words echo in my head every time I have to make a tough decision. </p>
+                <p>You’ve taught me what it means to be responsible, to be God-fearing, to be strong yet gentle, to be firm in values but tender in heart.
+                    You taught me that a man doesn’t just talk, he acts. A man doesn’t just provide, he protects. A man doesn’t just love, he sacrifices no matter the cost.</p>
+            </div>
+
+            <div class="epistle">
+                <p>I’ve watched you how you’ve work hard everytime, even when mom was gone, you worked harder for us, how you keep going even when life is tough, how you always put us first even before you.
+                    Sometimes I wonder if that’s human, but then I have come to realize that is what it means to be a Father. </p>
+                <p>There were times I didn’t fully understand the weight you carried or the struggles you silently bore, but as I grow older, I see now just how much you gave and how little you asked in return.
+                    You have been my provider, my protector, my counselor, my teacher, and my greatest cheerleader with God strengthening you in all this. And in everything, you did it with grace and humility.</p>
+            </div>
+
+            <div class="epistle">
+                <p>There’s something incredibly rare and beautiful about your spirit, Dad. You have this quiet strength, never boastful, never loud, but always present, always powerful.
+                    You don’t need to raise your voice to be heard; your life, and your actions and the people’s lives you have impacted in speaks volumes.
+                    And that’s something I will carry with me forever.</p>
+            </div>
+
+            <div class="epistle">
+                <p>I think of the times you encouraged me when I was doubting myself… the moments you believed in me more than I believed in myself. When I succeeded, you clapped the loudest.
+                    When I failed, you never let me forget my worth and still encouraged me. Even when you corrected me, and you did so with firm love, it was always because you saw in me the man I could become.
+                    You shaped your children’s character with your discipline and carved our souls with your kindness.</p>
+            </div>
+
+            <div class="epistle">
+                <p>Dad, I know things haven’t always been easy for you. I know you’ve faced storms that could have broken others, but you stood.
+                    For me, and for the rest of my siblings. And I just want you to know that I see it. I see you.
+                    And I’m thankful. Deeply, humbly thankful.</p>
+            </div>
+
+             <div class="epistle">
+                 <p>Thank you for the sacrifices. For the sleepless nights. I still remember when you’d come to me when I’m reading, and you’ll get food or something light to encourage me to keep pushing to success. </p>
+                 <p>Or the times when you’d stay awake with me, just to encourage me to never give up.
+                     For the times you put your dreams on hold just to make sure we could chase ours. For the patience. For the prayers. For the unwavering faith you placed in God and in us.</p>
+            </div>
+
+             <div class="epistle">
+                <p>You are a blessing to our family. You are our root.
+                    You always say this to me, “Elijah, you’re my first son, and an ambassador of this family, never forget where you came from no matter where you find yourself ”, and this has stuck with me and will be passed on to even my kids.
+                    And no matter how far I go or how high I climb, I will never forget where I came from and I came from you. A strong man. A faithful man. A good man.</p>
+            </div>
+
+             <div class="epistle">
+                 <h4>PRAYERS</h4>
+                <p>So today, I pray that joy fills your heart as richly as your love has filled ours in the name of Jesus.</p>
+                 <p>I pray that God will cause all your sowing to be reaps of joy and that your labour shall never be in the vain in the name of Jesus.</p>
+                 <p>I pray that you shall eat the fruit of your labour in your children's lives in the name of Jesus.</p>
+                 <p>I pray that God rewards you in ways only He can for everything you’ve given and everything you continue to be in the name of Jesus. </p>
+                 <p>I pray that you will see your children’s children, and you will never lack in the name of Jesus. The way you have supplied for us, Heaven will cause doors to keep opening for you on this earth in the name of Jesus. </p>
+                 <p>Daddy, again, you will never lack, and you will not die in the name of Jesus. Even if it’s your time, just as God added 15 years for king Hezekiah, he shall add more for you in the name of Jesus. </p>
+                 <p> I declare Psalm 91 and Psalm 35 over your life in the name of Jesus. May this new chapter bring you peace, health, and moments of rest cause you deserve them all, and more.</p>
+
+            </div>
+
+
+            <!-- Final Slide -->
+            <div class="epistle">
+                <p>Happy Birthday, Dad. I love you more than words can ever say. And I’m proud, so proud, to be your son.</p>
+                <div class="sign">
+
+                    <p>Your First Son and your Pride,</p>
+                </div>
+                <div class="signature">
+                    Elijah Charles</div>
+            </div>
+
+            <!-- Arrows -->
+            <span class="arrow prev">❮</span>
+            <span class="arrow next">❯</span>
+        </div>
+
+        <footer>
+            <p>Made with love for the world's greatest dad</p>
+        </footer>
+    </div>
+
+    <!-- Ambient music -->
+    <audio id="bg-music" loop>
+        <source src="worship-background.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-toggle">♫</button>
+
+    <script>
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.epistle');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+
+        document.querySelector('.next').addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        });
+
+        // Confetti
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.getElementById('confetti-container').appendChild(confetti);
+            setTimeout(() => confetti.remove(), 5000);
+        }
+
+        setInterval(createConfetti, 150);
+
+        // Music toggle
+        const music = document.getElementById('bg-music');
+        music.volume = 0.3;
+        music.play().catch(e => console.log("Auto-play prevented - click music button"));
+
+        document.getElementById('music-toggle').addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                document.getElementById('music-toggle').textContent = '♫';
+            } else {
+                music.pause();
+                document.getElementById('music-toggle').textContent = '🔇';
+            }
+        });
+    </script>
+</body>
+</html>
